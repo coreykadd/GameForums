@@ -19,7 +19,9 @@ const tokenMiddleware = require('./middleware/token.middleware');
 app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 app.use(express.static('public'));
 
@@ -42,20 +44,24 @@ if (CONFIG.app === 'dev' || CONFIG.app === 'test') {
 // Route and error handling
 app.use('/v1', v1);
 
-app.use('/', function(req, res) {
+app.use('/', function (req, res) {
     res.statusCode = 404;
-    res.json({status: 'success', message: 'Parcel Pending API', data: {}});
+    res.json({
+        status: 'success',
+        message: 'Parcel Pending API',
+        data: {}
+    });
 });
 
 // Catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     const err = new Error('Not found');
     err.status = 404;
     next(err);
 });
 
 // Error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // Set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'developmeny' ? err : {};
