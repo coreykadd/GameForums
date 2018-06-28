@@ -1,0 +1,64 @@
+/Back_end/node_modules
+/Back_end/.env
+/Back_end/.DS_Store
+/Back_end/public/images/*
+!/Back_end/public/images/.gitkeep
+!/Back_end/public/images/leaflet.jpg
+/Back_end/public/docs/leaflets/*
+!/Back_end/public/docs/leaflets/.gitkeep
+
+/Back_end/protected/images/*
+!/Back_end/protected/images/.gitkeep
+!/Back_end/protected/images/leaflet.jpg
+/Back_end/protected/docs/leaflets/*
+!/Back_end/protected/docs/leaflets/.gitkeep
+!/Back_end/protected/docs/research_publications/.gitkeep
+!/Back_end/protected/docs/models/.gitkeep
+/Back_end/tmp/*
+/Back_end/brightcoveTempUploads/*
+!/Back_end/brightcoveTempUploads/.gitkeep
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+*/dist
+*/dist-server
+*/tmp
+*/out-tsc
+
+# dependencies
+*/node_modules
+
+# IDEs and editors
+*/.idea
+*.project
+*.classpath
+*.c9/
+*.launch
+*.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+*.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+*/.sass-cache
+*/connect.lock
+*/coverage
+*/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+*/typings
+
+# e2e
+*/e2e/*.js
+*/e2e/*.map
+
+# System Files
+*.DS_Store
+*Thumbs.db
