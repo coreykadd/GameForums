@@ -52,7 +52,7 @@ const createUser = async function (userInfo) {
 }
 module.exports.createUser = createUser;
 
-const authUser = async function(userInfo) {
+const authUser = async function (userInfo) {
     let unique_key;
     let auth_info = {};
     auth_info.status = 'login';
@@ -60,20 +60,31 @@ const authUser = async function(userInfo) {
 
     if (!unique_key) TE('Please enter an email or username to login');
 
-    if(!userInfo.password) TE('Please enter a password to login');
+    if (!userInfo.password) TE('Please enter a password to login');
 
     let user;
     if (validator.isEmail(unique_key)) {
         auth_info.method = 'email';
 
-        [err, user] = await to(User.findOne({where: {email: unique_key}, include: [{model: Role}]}));
+        [err, user] = await to(User.findOne({
+            where: {
+                email: unique_key
+            },
+            include: [{
+                model: Role
+            }]
+        }));
         if (err) TE(err.message);
 
         return user;
     } else if (validator.isAlpha(unique_key, 'any')) {
         auth_info.method = 'username';
 
-        [err, user] = await to(User.findOne({where: {username: unique_key}}));
+        [err, user] = await to(User.findOne({
+            where: {
+                username: unique_key
+            }
+        }));
         if (err) TE(err.message);
 
         return user;
@@ -86,7 +97,10 @@ const authUser = async function(userInfo) {
     [err, user] = await to(user.comparePassword(userInfo.password));
     if (err) TE(err.message);
 
-    Log.create({UserId: user.id, action: 'Login'});
+    Log.create({
+        UserId: user.id,
+        action: 'Login'
+    });
 
     return user;
 }
